@@ -8,6 +8,8 @@ Modern Windows cleaner built with WPF on .NET 8. The project focuses on safe cle
 
 ![SonyDev Cleaner Home Dashboard](./docs/screenshots/home-dashboard.png)
 
+[Latest release](https://github.com/SonyDew/SonyDev-Cleaner/releases) • [Roadmap](./ROADMAP.md) • [Changelog](./CHANGELOG.md) • [Publishing Guide](./docs/PUBLISHING.md)
+
 ## Highlights
 
 - Safe cleanup workflow with preview-first scanning
@@ -128,6 +130,12 @@ The app can register a Windows Task Scheduler entry for a weekly background scan
 Contributions are welcome. Start with [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 If you want to report a vulnerability, use [SECURITY.md](./SECURITY.md) instead of opening a public issue first.
+
+## Project Planning
+
+- [ROADMAP.md](./ROADMAP.md) tracks the intended direction
+- [CHANGELOG.md](./CHANGELOG.md) tracks public release history
+- [docs/PUBLISHING.md](./docs/PUBLISHING.md) explains the release flow
 
 ## Repository Notes
 
