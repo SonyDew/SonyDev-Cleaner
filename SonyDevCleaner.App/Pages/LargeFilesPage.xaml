@@ -1,0 +1,117 @@
+<UserControl x:Class="SonyDevCleaner.App.Pages.LargeFilesPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,16">
+            <TextBlock Text="Large Files"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       FontFamily="Segoe UI Variable Display, Segoe UI" />
+            <TextBlock Margin="0,3,0,0"
+                       Text="Inspect the biggest folders before removing anything."
+                       FontSize="12"
+                       Foreground="#88D0D8F0"
+                       FontFamily="Segoe UI Variable Text, Segoe UI" />
+        </StackPanel>
+
+        <Border Grid.Row="1" Style="{StaticResource GlassPanel}" Margin="0,0,0,12" Padding="16,12">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Folder" Foreground="#AAD0D8F0" FontSize="12"
+                           VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox x:Name="FolderTextBox" Width="420" Height="34"
+                         Background="#18FFFFFF" BorderBrush="#25FFFFFF" BorderThickness="1"
+                         Foreground="White" CaretBrush="White" Padding="10,0"
+                         VerticalContentAlignment="Center" FontSize="12"/>
+                <Button x:Name="BrowseButton" Content="Browse" Style="{StaticResource GlassButton}"
+                        Margin="8,0,24,0" Height="34" Padding="14,0"/>
+                <TextBlock Text="Min MB" Foreground="#AAD0D8F0" FontSize="12"
+                           VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox x:Name="MinimumSizeTextBox" Width="70" Height="34"
+                         Background="#18FFFFFF" BorderBrush="#25FFFFFF" BorderThickness="1"
+                         Foreground="White" CaretBrush="White" Padding="10,0"
+                         VerticalContentAlignment="Center" FontSize="12" Text="64"/>
+                <Button x:Name="AnalyzeButton" Content="Analyze" Style="{StaticResource AccentButton}"
+                        Margin="12,0,0,0" Height="34" Padding="18,0"/>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="260" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Style="{StaticResource GlassPanel}" Padding="18" Margin="0,0,6,0" VerticalAlignment="Stretch">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Analysis Results" FontSize="20" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" />
+                    <TextBlock x:Name="SummaryText" Grid.Row="1" Margin="0,8,0,12" Text="Pick a folder to reveal the biggest files before you decide what to remove." TextWrapping="Wrap" FontSize="13" Foreground="{StaticResource TextSecondaryBrush}" />
+                    <Border x:Name="ResultsGridClipHost" Grid.Row="2" CornerRadius="16" Background="Transparent" BorderThickness="0">
+                        <Border.OpacityMask>
+                            <VisualBrush Stretch="None" AlignmentX="Left" AlignmentY="Top">
+                                <VisualBrush.Visual>
+                                    <Border Background="Black"
+                                            CornerRadius="16"
+                                            Width="{Binding ActualWidth, ElementName=ResultsGridClipHost}"
+                                            Height="{Binding ActualHeight, ElementName=ResultsGridClipHost}" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Border.OpacityMask>
+                        <Grid>
+                            <Border Height="36"
+                                    VerticalAlignment="Top"
+                                    Background="#12FFFFFF"
+                                    BorderBrush="#18FFFFFF"
+                                    BorderThickness="0,0,0,1"
+                                    CornerRadius="16,16,0,0"
+                                    IsHitTestVisible="False" />
+                            <DataGrid x:Name="ResultsGrid"
+                                      Background="Transparent"
+                                      BorderThickness="0"
+                                      Margin="0"
+                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                      Grid.Row="2"
+                                      Style="{StaticResource GlassDataGrid}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="File" Binding="{Binding Name}" Width="1.5*" />
+                                    <DataGridTextColumn Header="Folder" Binding="{Binding Folder}" Width="2.6*" />
+                                    <DataGridTextColumn Header="Size" Binding="{Binding Size}" Width="0.8*" />
+                                    <DataGridTextColumn Header="Modified" Binding="{Binding Modified}" Width="1.1*" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="1" Style="{StaticResource GlassPanel}" Padding="18" Margin="6,0,0,0" VerticalAlignment="Stretch">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Analyzer Notes" FontSize="20" FontWeight="SemiBold" Foreground="{StaticResource TextPrimaryBrush}" />
+                    <TextBlock Grid.Row="1" Margin="0,8,0,12" Text="This page is for inspection only." TextWrapping="Wrap" FontSize="13" Foreground="{StaticResource TextSecondaryBrush}" />
+                    <TextBlock Grid.Row="2"
+                               Text="- Pick a folder you trust.&#x0a;&#x0a;- Increase the minimum size for faster scans on big drives.&#x0a;&#x0a;- Double-click a result row to reveal it in Explorer."
+                               TextWrapping="Wrap"
+                               FontSize="13"
+                               Foreground="{StaticResource TextMutedBrush}" />
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,32 @@
+# Build output
+bin/
+obj/
+publish/
+artifacts/
+TestResults/
+
+# IDE and local user files
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userprefs
+*.rsuser
+
+# Logs and diagnostics
+*.log
+*.tmp
+*.cache
+*.pdb
+
+# Local app data artifacts
+**/stats.json
+**/schedule.json
+
+# NuGet
+packages/
+
+# OS files
+Thumbs.db
+Desktop.ini

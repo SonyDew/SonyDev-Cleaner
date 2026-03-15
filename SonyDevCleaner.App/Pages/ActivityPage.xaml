@@ -1,0 +1,36 @@
+<UserControl x:Class="SonyDevCleaner.App.Pages.ActivityPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,16">
+            <TextBlock Text="Activity"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       FontFamily="Segoe UI Variable Display, Segoe UI" />
+            <TextBlock Margin="0,3,0,0"
+                       Text="Every scan, cleanup and analyzer event in one place."
+                       FontSize="12"
+                       Foreground="#88D0D8F0"
+                       FontFamily="Segoe UI Variable Text, Segoe UI" />
+        </StackPanel>
+
+        <Border Grid.Row="1" Style="{StaticResource GlassPanel}" Margin="0" Padding="18">
+            <RichTextBox x:Name="ActivityLogTextBox"
+                         Width="Auto"
+                         Height="Auto"
+                         VerticalAlignment="Stretch"
+                         FontFamily="Cascadia Mono, Consolas, Courier New"
+                         FontSize="11.5"
+                         Foreground="#B0C8D8F0"
+                         Background="#0AFFFFFF"
+                         Padding="14,10" />
+        </Border>
+    </Grid>
+</UserControl>

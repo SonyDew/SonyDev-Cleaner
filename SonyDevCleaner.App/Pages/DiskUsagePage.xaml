@@ -1,0 +1,98 @@
+<UserControl x:Class="SonyDevCleaner.App.Pages.DiskUsagePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,16">
+            <TextBlock Text="Disk Usage"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       FontFamily="Segoe UI Variable Display, Segoe UI" />
+            <TextBlock Margin="0,3,0,0"
+                       Text="Largest folders on your drives."
+                       FontSize="12"
+                       Foreground="#88D0D8F0"
+                       FontFamily="Segoe UI Variable Text, Segoe UI" />
+            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                <ComboBox x:Name="DriveCombo"
+                          Width="160"
+                          Height="32"
+                          SelectionChanged="DriveCombo_SelectionChanged" />
+                <Button x:Name="AnalyzeButton"
+                        Content="Analyze"
+                        Style="{StaticResource GlassButton}"
+                        Height="32"
+                        Margin="8,0,0,0"
+                        Padding="16,0"
+                        Click="Analyze_Click" />
+                <TextBlock x:Name="DiskUsageScanStatus"
+                           Foreground="#88FFFFFF"
+                           VerticalAlignment="Center"
+                           Margin="12,0,0,0" />
+            </StackPanel>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="280" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                    Style="{StaticResource GlassPanel}"
+                    Margin="0,0,6,0"
+                    Padding="18">
+                <ScrollViewer x:Name="FolderBarsScrollViewer"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel x:Name="FolderBars" />
+                </ScrollViewer>
+            </Border>
+
+            <Border Grid.Column="1"
+                    Style="{StaticResource GlassPanel}"
+                    Margin="6,0,0,0"
+                    Padding="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Top Folders"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Margin="16,14,0,0"
+                               Foreground="{StaticResource TextPrimaryBrush}" />
+                    <ListView x:Name="TopFoldersList"
+                              Grid.Row="1"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              Margin="8,8,8,8"
+                              Foreground="{StaticResource TextPrimaryBrush}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,6">
+                                    <TextBlock Text="{Binding Name}"
+                                               Foreground="{StaticResource TextPrimaryBrush}"
+                                               FontSize="12"
+                                               TextTrimming="CharacterEllipsis" />
+                                    <TextBlock Text="{Binding SizeText}"
+                                               Margin="0,2,0,0"
+                                               Foreground="{StaticResource TextMutedBrush}"
+                                               FontSize="10" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

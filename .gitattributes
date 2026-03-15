@@ -1,0 +1,9 @@
+* text=auto
+
+*.sln text eol=crlf
+*.cs text diff=csharp
+*.csproj text
+*.xaml text
+*.md text
+*.yml text
+*.yaml text
