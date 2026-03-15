@@ -6,6 +6,8 @@
 
 Modern Windows cleaner built with WPF on .NET 8. The project focuses on safe cleanup, clear previews, modular tools, and a polished desktop UI instead of aggressive "optimizer" behavior.
 
+![SonyDev Cleaner Home Dashboard](./docs/screenshots/home-dashboard.png)
+
 ## Highlights
 
 - Safe cleanup workflow with preview-first scanning
@@ -45,6 +47,20 @@ Modern Windows cleaner built with WPF on .NET 8. The project focuses on safe cle
 - Lightweight per-drive folder size overview
 - Top folders list plus visual bar breakdown
 
+## Screenshots
+
+| Home | Safe Cleanup |
+|---|---|
+| ![Home Dashboard](./docs/screenshots/home-dashboard.png) | ![Safe Cleanup](./docs/screenshots/safe-cleanup.png) |
+
+| Large Files | Activity |
+|---|---|
+| ![Large Files](./docs/screenshots/large-files.png) | ![Activity](./docs/screenshots/activity.png) |
+
+| Startup Manager | Disk Usage |
+|---|---|
+| ![Startup Manager](./docs/screenshots/startup-manager.png) | ![Disk Usage](./docs/screenshots/disk-usage.png) |
+
 ## Safety Philosophy
 
 SonyDev Cleaner intentionally avoids:
@@ -65,8 +81,8 @@ The project prefers visibility, reversible actions where possible, and clear sta
 ## Getting Started
 
 ```powershell
-git clone <your-repo-url>
-cd SonyDevCleaner
+git clone https://github.com/SonyDew/SonyDev-Cleaner.git
+cd SonyDev-Cleaner
 dotnet restore
 dotnet build SonyDevCleaner.sln
 dotnet run --project .\SonyDevCleaner.App\SonyDevCleaner.App.csproj
@@ -113,9 +129,11 @@ Contributions are welcome. Start with [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 If you want to report a vulnerability, use [SECURITY.md](./SECURITY.md) instead of opening a public issue first.
 
-## Screens and Assets
+## Repository Notes
 
-This repository is source-first. If you publish screenshots for GitHub later, add them under `docs/` and link them here.
+- `docs/screenshots/` contains the GitHub preview images
+- the app is Windows-only and targets `net8.0-windows`
+- cleanup is preview-first by design; destructive actions are never hidden behind vague "optimize" buttons
 
 ## License
 
